@@ -1,0 +1,19 @@
+id: org.flatpak.readingDiary
+runtime: org.kde.Platform
+runtime-version: '6.8'
+sdk: org.kde.Sdk
+command: readingDiary
+finish-args:
+    - --share=ipc
+    - --socket=wayland
+    - --socket=fallback-x11
+    - --device=dri
+    - --filesystem=home
+modules:
+    - name: readingDiary
+      buildsystem: qmake
+      sources: 
+      - type: dir
+        path: .
+
+
