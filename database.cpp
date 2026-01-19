@@ -69,7 +69,6 @@ bool Database::createTables()
             rating INTEGER,
             description TEXT,
             read BOOLEAN DEFAULT 0,
-            view_rights TEXT DEFAULT 'everyone',
             cover BLOB,
             section_id INTEGER,
             FOREIGN KEY (section_id) REFERENCES sections(section_id)
@@ -98,7 +97,18 @@ bool Database::createTables()
     }
     else Database::createUser("admin", "123");
 
-
+    QString createSettings = R"(
+        CREATE TABLE IF NOT EXISTS settings(
+        setting_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        language TEXT NOT NULL DAFAULT 'eng'
+    )
+)";
+   if(query.exec(createSettings)){
+       qDebug() <<"Error creating settings table:" << query.lastError();
+       return false;
+    }
+   else
+       qDebug() <<"settings created succesfully";
     qDebug() << "All tables created successfully";
     return true;
 }
@@ -271,3 +281,4 @@ bool Database::deleteUser(int userId)
     query.addBindValue(userId);
     return query.exec();
 }
+

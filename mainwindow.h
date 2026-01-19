@@ -12,6 +12,7 @@
 #include "database.h"
 #include <QMessageBox>
 #include <QSqlRecord>
+#include <QTranslator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +26,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QTranslator& getTranslator();
+    static MainWindow* instance();
+    void setTranslator(QTranslator* translator);
 
 private slots:
     void onNewBook();
@@ -36,27 +40,19 @@ private slots:
     void onDeleteSection();
     void onDeleteUser();
 
+    void on_pbChangeLang_clicked();
+
 private:
     void setupUI();
     void loadSections();
     void loadBooks(int sectionId = -1);
     void loadUsers();
 
-    QTabWidget *mTabWidget;
-    QTableView *mBooksTable;
-    QTableView *mSectionsTable;
-    QTableView *mUsersTable;
-    QTextBrowser *mHelp;
     QSqlTableModel *mBooksModel;
     QSqlTableModel *mSectionsModel;
     QSqlTableModel *mUsersModel;
-    QComboBox *mSectionFilter;
-    QLineEdit *mSearchBar;
-    QPushButton *mDeleteBook;
-    QPushButton *mDeleteSection;
-    QPushButton *mDeleteUser;
-    QPushButton *mCreateUser;
-
+    QTranslator *mTranslator = nullptr;
+    static MainWindow* mInstance;
 
     QString mCurrentUserName;
     Ui::MainWindow *ui;

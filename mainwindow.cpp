@@ -13,19 +13,15 @@
 #include <QMessageBox>
 #include <QStatusBar>
 #include <QTranslator>
+#include <QSettings>
+#include <QTranslator>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , mCurrentUserName("guest")
     , ui(new Ui::MainWindow)
 {
-    if (!Database::instance().connect()) {
-        QMessageBox::critical(this, "Критична помилка",
-                            "Не вдалось підключитись до бази даних!");
-        QApplication::quit();
-        return;
-    }
-    else Database::instance().createUser("admin", "123");
+
 
     LoginDialog loginDialog(this);
     if (loginDialog.exec() == QDialog::Accepted) {
@@ -36,10 +32,12 @@ MainWindow::MainWindow(QWidget *parent)
         loadSections();
         loadBooks();
 
-        statusBar()->showMessage(QString("Вітаємо, %1!").arg(mCurrentUserName));
+        statusBar()->showMessage(QString(tr("Вітаємо, %1!")).arg(mCurrentUserName));
     } else {
         QApplication::quit();
     }
+
+    // mInstance = this;
 }
 
 MainWindow::~MainWindow()
@@ -49,7 +47,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::setupUI()
 {
-    setWindowTitle("Читацький щоденник");
+    setWindowTitle(tr("Читацький щоденник"));
     resize(1200, 700);
 
     ui->newBookAction->setShortcut(QKeySequence::New);
@@ -72,7 +70,7 @@ void MainWindow::setupUI()
     ui->filterLayout->addStretch();
 
 
-    ui->searchBar->setPlaceholderText("Пошук книг...");
+    ui->searchBar->setPlaceholderText(tr("Пошук книг..."));
 
     ui->searchBar->setMaximumWidth(300);
     connect(ui->searchBar, &QLineEdit::textChanged, this, &MainWindow::onSearch);
@@ -82,14 +80,13 @@ void MainWindow::setupUI()
     mBooksModel->setEditStrategy(QSqlTableModel::OnFieldChange);
 
     // Встановлення заголовків
-    mBooksModel->setHeaderData(1, Qt::Horizontal, "Носій");
-    mBooksModel->setHeaderData(2, Qt::Horizontal, "Назва");
-    mBooksModel->setHeaderData(3, Qt::Horizontal, "Автор");
-    mBooksModel->setHeaderData(4, Qt::Horizontal, "Жанр");
-    mBooksModel->setHeaderData(5, Qt::Horizontal, "Рейтинг");
-    mBooksModel->setHeaderData(6, Qt::Horizontal, "Опис");
-    mBooksModel->setHeaderData(7, Qt::Horizontal, "Прочитано");
-    mBooksModel->setHeaderData(8, Qt::Horizontal, "Права перегляду");
+    mBooksModel->setHeaderData(1, Qt::Horizontal, tr("Носій"));
+    mBooksModel->setHeaderData(2, Qt::Horizontal, tr("Назва"));
+    mBooksModel->setHeaderData(3, Qt::Horizontal, tr("Автор"));
+    mBooksModel->setHeaderData(4, Qt::Horizontal, tr("Жанр"));
+    mBooksModel->setHeaderData(5, Qt::Horizontal, tr("Рейтинг"));
+    mBooksModel->setHeaderData(6, Qt::Horizontal, tr("Опис"));
+    mBooksModel->setHeaderData(7, Qt::Horizontal, tr("Прочитано"));
     mBooksModel->select();
 
     ui->booksTable->setModel(mBooksModel);
@@ -101,18 +98,18 @@ void MainWindow::setupUI()
     ui->booksTable->hideColumn(0); // Приховати ID
     ui->booksTable->hideColumn(9); // Приховати обкладинку
     ui->booksTable->hideColumn(10);
+    ui->booksTable->hideColumn(8);
     connect(ui->DeleteBook, &QPushButton::clicked, this, &MainWindow::onDeleteBook);
 
     mSectionsModel = new QSqlTableModel(this, Database::instance().getDatabase());
     mSectionsModel->setTable("sections");
     mSectionsModel->setEditStrategy(QSqlTableModel::OnFieldChange);
 
-    mSectionsModel->setHeaderData(1, Qt::Horizontal, "Назва");
-    mSectionsModel->setHeaderData(2, Qt::Horizontal, "Абревіатура");
-    mSectionsModel->setHeaderData(3, Qt::Horizontal, "Опис");
-    mSectionsModel->setHeaderData(4, Qt::Horizontal, "Шлях");
-    mSectionsModel->setHeaderData(5, Qt::Horizontal, "Кількість книг");
-    mSectionsModel->setHeaderData(6, Qt::Horizontal, "Групи які мають доступ");
+    mSectionsModel->setHeaderData(1, Qt::Horizontal, tr("Назва"));
+    mSectionsModel->setHeaderData(2, Qt::Horizontal, tr("Абревіатура"));
+    mSectionsModel->setHeaderData(3, Qt::Horizontal, tr("Опис"));
+    mSectionsModel->setHeaderData(4, Qt::Horizontal, tr("Шлях"));
+    mSectionsModel->setHeaderData(5, Qt::Horizontal, tr("Кількість книг"));
     mSectionsModel->select();
 
 
@@ -122,6 +119,7 @@ void MainWindow::setupUI()
     ui->SectionsTable->horizontalHeader()->setStretchLastSection(true);
     ui->SectionsTable->verticalHeader()->hide();
     ui->SectionsTable->hideColumn(0); // Приховати ID
+    ui->SectionsTable->hideColumn(6);
 
     connect(ui->DeleteSection, &QPushButton::clicked, this, &MainWindow::onDeleteSection);
 
@@ -129,9 +127,9 @@ void MainWindow::setupUI()
     mUsersModel->setTable("users");
     mUsersModel->setEditStrategy(QSqlTableModel::OnFieldChange);
 
-    mUsersModel->setHeaderData(1, Qt::Horizontal, "Користувач");
-    mUsersModel->setHeaderData(4, Qt::Horizontal, "Дата створення");
-    mUsersModel->setHeaderData(5, Qt::Horizontal, "Останній вхід");
+    mUsersModel->setHeaderData(1, Qt::Horizontal, tr("Користувач"));
+    mUsersModel->setHeaderData(4, Qt::Horizontal, tr("Дата створення"));
+    mUsersModel->setHeaderData(5, Qt::Horizontal, tr("Останній вхід"));
     mUsersModel->select();
 
     ui->usersTable->setModel(mUsersModel);
@@ -156,7 +154,7 @@ void MainWindow::setupUI()
 void MainWindow::loadSections()
 {
     ui->cbSection->clear();
-    ui->cbSection->addItem("📚 Всі секції", -1);
+    ui->cbSection->addItem(tr("📚 Всі секції"), -1);
 
     QSqlQuery query("SELECT section_id, name, book_count FROM sections ORDER BY name");
     while (query.next()) {
@@ -179,7 +177,7 @@ void MainWindow::loadBooks(int sectionId)
     mBooksModel->select();
 
     statusBar()->showMessage(
-        QString("Показано книг: %1").arg(mBooksModel->rowCount()), 3000);
+        QString(tr("Показано книг: %1")).arg(mBooksModel->rowCount()), 3000);
 }
 
 
@@ -190,7 +188,7 @@ void MainWindow::onNewBook()
         mBooksModel->select();
         mSectionsModel->select();
         loadSections();
-        statusBar()->showMessage("Книгу успішно додано!", 3000);
+        statusBar()->showMessage(tr("Книгу успішно додано!"), 3000);
     }
 }
 
@@ -200,7 +198,7 @@ void MainWindow::onNewSection()
     if (dialog.exec() == QDialog::Accepted) {
         mSectionsModel->select();
         loadSections();
-        statusBar()->showMessage("Секцію успішно додано!", 3000);
+        statusBar()->showMessage(tr("Секцію успішно додано!"), 3000);
     }
 
 }
@@ -210,7 +208,7 @@ void MainWindow::onNewAccount()
     NewAccountDialog dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
         mUsersModel->select();
-        statusBar()->showMessage("Акаунт успішно створено!", 3000);
+        statusBar()->showMessage(tr("Акаунт успішно створено!"), 3000);
     }
 }
 
@@ -249,7 +247,7 @@ void MainWindow::onDeleteBook()
 {
     QModelIndex index = ui->booksTable->currentIndex();
     if (!index.isValid()) {
-        QMessageBox::warning(this, "Помилка", "Оберіть книгу для видалення");
+        QMessageBox::warning(this, tr("Помилка"), tr("Оберіть книгу для видалення"));
         return;
     }
 
@@ -258,16 +256,16 @@ void MainWindow::onDeleteBook()
     QString title = mBooksModel->record(row).value("title").toString();
 
     QMessageBox::StandardButton reply = QMessageBox::question(
-        this, "Підтвердження",
-        QString("Ви впевнені, що хочете видалити книгу '%1'?").arg(title),
+        this, tr("Підтвердження"),
+        QString(tr("Ви впевнені, що хочете видалити книгу '%1'?")).arg(title),
         QMessageBox::Yes | QMessageBox::No);
 
     if (reply == QMessageBox::Yes) {
         if (Database::instance().deleteBook(bookId)) {
-            QMessageBox::information(this, "Успіх", "Книгу видалено!");
+            QMessageBox::information(this, tr("Успіх"), tr("Книгу видалено!"));
             mBooksModel->select();
         } else {
-            QMessageBox::critical(this, "Помилка", "Не вдалось видалити книгу");
+            QMessageBox::critical(this, tr("Помилка"), tr("Не вдалось видалити книгу"));
         }
     }
     loadBooks();
@@ -277,7 +275,7 @@ void MainWindow::onDeleteSection()
 {
     QModelIndex index = ui->SectionsTable->currentIndex();
     if(!index.isValid()){
-        QMessageBox::warning(this, "Помилка", "Оберіть секцію для видалення");
+        QMessageBox::warning(this, tr("Помилка"), tr("Оберіть секцію для видалення"));
         return;
     }
 
@@ -286,16 +284,16 @@ void MainWindow::onDeleteSection()
     QString name = mSectionsModel->record(row).value("name").toString();
 
     QMessageBox::StandardButton reply = QMessageBox::question(
-        this, "Підтвердження",
-        QString("Ви впевнені, що хочете видалити секцію '%1'?").arg(name),
+        this, tr("Підтвердження"),
+        QString(tr("Ви впевнені, що хочете видалити секцію '%1'?")).arg(name),
         QMessageBox::Yes | QMessageBox::No);
 
     if (reply == QMessageBox::Yes) {
         if (Database::instance().deleteSection(sectionId)) {
-            QMessageBox::information(this, "Успіх", "Секцію видалено!");
+            QMessageBox::information(this, tr("Успіх"), tr("Секцію видалено!"));
             mSectionsModel->select();
         } else {
-            QMessageBox::critical(this, "Помилка", "Не вдалось видалити книгу");
+            QMessageBox::critical(this, tr("Помилка"), tr("Не вдалось видалити книгу"));
         }
     }
     void loadSections();
@@ -305,7 +303,7 @@ void MainWindow::onDeleteUser()
 {
     QModelIndex index = ui->usersTable->currentIndex();
     if(!index.isValid()){
-        QMessageBox::warning(this, "Помилка", "Оберіть користувача для видалення");
+        QMessageBox::warning(this, tr("Помилка"), tr("Оберіть користувача для видалення"));
         return;
     }
 
@@ -314,16 +312,37 @@ void MainWindow::onDeleteUser()
     QString userName = mUsersModel->record(row).value("username").toString();
 
     QMessageBox::StandardButton reply = QMessageBox::question(
-        this, "Підтвердження",
-        QString("Ви впевнені, що хочете видалити користувача '%1'?").arg(userName),
+        this, tr("Підтвердження"),
+        QString(tr("Ви впевнені, що хочете видалити користувача '%1'?")).arg(userName),
         QMessageBox::Yes | QMessageBox::No);
 
     if (reply == QMessageBox::Yes) {
         if (Database::instance().deleteUser(userId)) {
-            QMessageBox::information(this, "Успіх", "Користувача видалено!");
+            QMessageBox::information(this, tr("Успіх"), tr("Користувача видалено!"));
             mUsersModel->select();
         } else {
-            QMessageBox::critical(this, "Помилка", "Не вдалось видалити Користувача");
+            QMessageBox::critical(this, tr("Помилка"), tr("Не вдалось видалити Користувача"));
         }
     }
 }
+
+QTranslator& MainWindow::getTranslator(){
+    return *mTranslator;
+}
+
+void MainWindow::on_pbChangeLang_clicked()
+{
+    QString lang =ui->cbLanguage->currentText();
+    QSettings settings;
+    settings.setValue("langeuage", lang);
+    QString path = ":/translations/"+lang;
+    qDebug() <<"translation... "<<path;
+    if(mTranslator->load(path))
+        QCoreApplication::installTranslator(mTranslator);
+    ui->retranslateUi(this);
+}
+
+void MainWindow::setTranslator(QTranslator* translator) {
+    mTranslator = translator;
+}
+

@@ -19,6 +19,7 @@ SOURCES += \
     models/book.cpp \
     models/group.cpp \
     models/section.cpp \
+    models/settings.cpp \
     models/user.cpp
 
 HEADERS += \
@@ -31,9 +32,10 @@ HEADERS += \
     models/book.h \
     models/group.h \
     models/section.h \
+    models/settings.h \
     models/user.h
 
-TRANSLATIONS = eng.ts ua.ts
+TRANSLATIONS = English.ts Ukranian(Українська).ts
 
 FORMS += \
     mainwindow.ui

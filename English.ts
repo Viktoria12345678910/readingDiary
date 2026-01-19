@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_GB" sourcelanguage="uk_UA">
+<TS version="2.1" language="en_US">
 <context>
     <name>LoginDialog</name>
     <message>
         <location filename="dialogs/logindialog.cpp" line="17"/>
         <source>Вхід до системи</source>
-        <translation>Login dialog</translation>
+        <translation>LogIn</translation>
     </message>
     <message>
         <location filename="dialogs/logindialog.cpp" line="24"/>
         <source>Ім&apos;я користувача:</source>
-        <translation>Username:</translation>
+        <translation>Usename:</translation>
     </message>
     <message>
         <location filename="dialogs/logindialog.cpp" line="28"/>
@@ -27,17 +27,17 @@
         <location filename="dialogs/logindialog.cpp" line="51"/>
         <location filename="dialogs/logindialog.cpp" line="60"/>
         <source>Помилка</source>
-        <translation>error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="dialogs/logindialog.cpp" line="51"/>
         <source>Заповніть всі поля</source>
-        <translation>you need to feel out all fields</translation>
+        <translation>Enter all fields</translation>
     </message>
     <message>
         <location filename="dialogs/logindialog.cpp" line="60"/>
         <source>Невірне ім&apos;я користувача або пароль</source>
-        <translation>wrong username or password</translation>
+        <translation>Wrong username or password</translation>
     </message>
 </context>
 <context>
@@ -45,7 +45,7 @@
     <message>
         <location filename="mainwindow.ui" line="14"/>
         <source>MainWindow</source>
-        <translation>reading diary</translation>
+        <translation>ReadingDiary</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="21"/>
@@ -60,22 +60,22 @@
     <message>
         <location filename="mainwindow.ui" line="50"/>
         <source>Секція:</source>
-        <translation>section filter</translation>
+        <translation>Section:</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="68"/>
         <source>Видалити книгу</source>
-        <translation>delete book</translation>
+        <translation>Delete book</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="78"/>
         <source>📂 Секції</source>
-        <translation>📂 Sections</translation>
+        <translation>📂Section</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="89"/>
         <source>Видалити секцію</source>
-        <translation>delete section</translation>
+        <translation>Delete section</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="99"/>
@@ -85,47 +85,244 @@
     <message>
         <location filename="mainwindow.ui" line="112"/>
         <source>Видалити користувача</source>
-        <translation>delete user</translation>
+        <translation>Delete users</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="119"/>
         <source>Додати користувача</source>
-        <translation>add user</translation>
+        <translation>Add user</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="131"/>
         <source>⚙️ Налаштування</source>
-        <translation>⚙️ Settings</translation>
+        <translation>⚙️Settings</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="142"/>
-        <source>мова</source>
-        <translation>language</translation>
+        <location filename="mainwindow.ui" line="143"/>
+        <source>English</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="155"/>
+        <location filename="mainwindow.ui" line="148"/>
+        <source>Ukranian(Українська)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="156"/>
+        <source>змінити мову </source>
+        <translation>Change langeage</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="166"/>
         <source>❓Допоміжна інформація</source>
-        <translation>❓ Help</translation>
+        <translation>❓Help</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="182"/>
+        <location filename="mainwindow.ui" line="193"/>
         <source>Файл</source>
-        <translation>File</translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="195"/>
+        <location filename="mainwindow.ui" line="206"/>
         <source>&amp;Нова книга</source>
         <translation>&amp;New book</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="200"/>
+        <location filename="mainwindow.ui" line="211"/>
         <source>Нова &amp;секція</source>
         <translation>New &amp;section</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="205"/>
+        <location filename="mainwindow.ui" line="216"/>
         <source>&amp;Вихід</source>
         <translation>&amp;Exit</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="35"/>
+        <source>Вітаємо, %1!</source>
+        <translation>Welcome &apos;%1&apos;!</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="50"/>
+        <source>Читацький щоденник</source>
+        <translation>Reading diary</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="73"/>
+        <source>Пошук книг...</source>
+        <translation>Search...</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="83"/>
+        <source>Носій</source>
+        <translation>Medium</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="84"/>
+        <location filename="mainwindow.cpp" line="108"/>
+        <source>Назва</source>
+        <translation>Title</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="85"/>
+        <source>Автор</source>
+        <translation>Author</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="86"/>
+        <source>Жанр</source>
+        <translation>Genre</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="87"/>
+        <source>Рейтинг</source>
+        <translation>Rating</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="88"/>
+        <location filename="mainwindow.cpp" line="110"/>
+        <source>Опис</source>
+        <translation>Description</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="89"/>
+        <source>Прочитано</source>
+        <translation>Read</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="109"/>
+        <source>Абревіатура</source>
+        <translation>Abbreviation</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="111"/>
+        <source>Шлях</source>
+        <translation>Path</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="112"/>
+        <source>Кількість книг</source>
+        <translation>Amount of books</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="130"/>
+        <source>Користувач</source>
+        <translation>Username</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="131"/>
+        <source>Дата створення</source>
+        <translation>Creation date</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="132"/>
+        <source>Останній вхід</source>
+        <translation>Last login</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="157"/>
+        <source>📚 Всі секції</source>
+        <translation>📚 all section</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="180"/>
+        <source>Показано книг: %1</source>
+        <translation>&apos;%1&apos; books shown</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="191"/>
+        <source>Книгу успішно додано!</source>
+        <translation>Book successfully created!</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="201"/>
+        <source>Секцію успішно додано!</source>
+        <translation>Section successfully added</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="211"/>
+        <source>Акаунт успішно створено!</source>
+        <translation>Account successfully create</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="250"/>
+        <location filename="mainwindow.cpp" line="268"/>
+        <location filename="mainwindow.cpp" line="278"/>
+        <location filename="mainwindow.cpp" line="296"/>
+        <location filename="mainwindow.cpp" line="306"/>
+        <location filename="mainwindow.cpp" line="324"/>
+        <source>Помилка</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="250"/>
+        <source>Оберіть книгу для видалення</source>
+        <translation>Choose book to be deleted</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="259"/>
+        <location filename="mainwindow.cpp" line="287"/>
+        <location filename="mainwindow.cpp" line="315"/>
+        <source>Підтвердження</source>
+        <translation>Confirmation</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="260"/>
+        <source>Ви впевнені, що хочете видалити книгу &apos;%1&apos;?</source>
+        <translation>Are you sure you want to delete &apos;%1&apos;?</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="265"/>
+        <location filename="mainwindow.cpp" line="293"/>
+        <location filename="mainwindow.cpp" line="321"/>
+        <source>Успіх</source>
+        <translation>Success</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="265"/>
+        <source>Книгу видалено!</source>
+        <translation>Book deleted!</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="268"/>
+        <location filename="mainwindow.cpp" line="296"/>
+        <source>Не вдалось видалити книгу</source>
+        <translation>Could not delete book</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="278"/>
+        <source>Оберіть секцію для видалення</source>
+        <translation>Choose section to be deleted</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="288"/>
+        <source>Ви впевнені, що хочете видалити секцію &apos;%1&apos;?</source>
+        <translation>Are you sure you want to delete &apos;%1&apos;?</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="293"/>
+        <source>Секцію видалено!</source>
+        <translation>Section was deleted!</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="306"/>
+        <source>Оберіть користувача для видалення</source>
+        <translation>Choose user to be deleted</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="316"/>
+        <source>Ви впевнені, що хочете видалити користувача &apos;%1&apos;?</source>
+        <translation>Are you sure you want to delete &apos;%1&apos;?</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="321"/>
+        <source>Користувача видалено!</source>
+        <translation>User deleted!</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="324"/>
+        <source>Не вдалось видалити Користувача</source>
+        <translation>Could not delete user</translation>
     </message>
 </context>
 <context>
@@ -138,7 +335,7 @@
     <message>
         <location filename="dialogs/newaccountdialog.cpp" line="25"/>
         <source>Ім&apos;я користувача*:</source>
-        <translation>Username*:</translation>
+        <translation>Username</translation>
     </message>
     <message>
         <location filename="dialogs/newaccountdialog.cpp" line="29"/>
@@ -148,7 +345,7 @@
     <message>
         <location filename="dialogs/newaccountdialog.cpp" line="33"/>
         <source>Підтвердження паролю*:</source>
-        <translation>Confirm password*:</translation>
+        <translation>Password confirmation*:</translation>
     </message>
     <message>
         <location filename="dialogs/newaccountdialog.cpp" line="47"/>
@@ -156,12 +353,12 @@
         <location filename="dialogs/newaccountdialog.cpp" line="57"/>
         <location filename="dialogs/newaccountdialog.cpp" line="65"/>
         <source>Помилка</source>
-        <translation>error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="dialogs/newaccountdialog.cpp" line="47"/>
         <source>Ім&apos;я користувача обов&apos;язкове!</source>
-        <translation>Username is neccessary</translation>
+        <translation>Username is neccessary!</translation>
     </message>
     <message>
         <location filename="dialogs/newaccountdialog.cpp" line="52"/>
@@ -171,7 +368,7 @@
     <message>
         <location filename="dialogs/newaccountdialog.cpp" line="57"/>
         <source>Паролі не співпадають!</source>
-        <translation>passwords dont match!</translation>
+        <translation>Passwords do not match</translation>
     </message>
     <message>
         <location filename="dialogs/newaccountdialog.cpp" line="62"/>
@@ -181,12 +378,12 @@
     <message>
         <location filename="dialogs/newaccountdialog.cpp" line="62"/>
         <source>Акаунт успішно створено!</source>
-        <translation>Account was created successfully</translation>
+        <translation>Account successfully created!</translation>
     </message>
     <message>
         <location filename="dialogs/newaccountdialog.cpp" line="65"/>
         <source>Не вдалось створити акаунт!</source>
-        <translation>Was not able to create account!</translation>
+        <translation>Could not create account!</translation>
     </message>
 </context>
 <context>
@@ -214,7 +411,7 @@
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="32"/>
         <source>Тип носія:</source>
-        <translation>Medium</translation>
+        <translation>Medium:</translation>
     </message>
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="36"/>
@@ -229,7 +426,7 @@
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="44"/>
         <source>Жанр:</source>
-        <translation>Gener:</translation>
+        <translation>Genre:</translation>
     </message>
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="50"/>
@@ -239,7 +436,7 @@
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="55"/>
         <source>Опис:</source>
-        <translation>Description:</translation>
+        <translation>Description</translation>
     </message>
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="58"/>
@@ -255,29 +452,29 @@
         <location filename="dialogs/newbookdialog.cpp" line="67"/>
         <location filename="dialogs/newbookdialog.cpp" line="103"/>
         <source>Вибрати обкладинку</source>
-        <translation>choose cover</translation>
+        <translation>Choose cover</translation>
     </message>
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="78"/>
         <source>Обкладинка:</source>
-        <translation>Cover:</translation>
+        <translation>Cover</translation>
     </message>
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="103"/>
         <source>Зображення (*.png *.jpg *.jpeg)</source>
-        <translation>Picture (*.png *.jpg *.jpeg)</translation>
+        <translation>Picture(*.png *.jpg *.jpeg)</translation>
     </message>
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="120"/>
         <location filename="dialogs/newbookdialog.cpp" line="125"/>
         <location filename="dialogs/newbookdialog.cpp" line="147"/>
         <source>Помилка</source>
-        <translation>error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="120"/>
         <source>Назва книги обов&apos;язкова!</source>
-        <translation>Title is neccessary!</translation>
+        <translation>Book title is neccessary</translation>
     </message>
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="125"/>
@@ -292,12 +489,12 @@
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="144"/>
         <source>Книгу успішно додано!</source>
-        <translation>Book was created successfully</translation>
+        <translation>Book successfully added!</translation>
     </message>
     <message>
         <location filename="dialogs/newbookdialog.cpp" line="147"/>
         <source>Не вдалось додати книгу!</source>
-        <translation>could not add book!</translation>
+        <translation>Could not add book!</translation>
     </message>
 </context>
 <context>
@@ -310,12 +507,12 @@
     <message>
         <location filename="dialogs/newsectiondialog.cpp" line="25"/>
         <source>Назва*:</source>
-        <translation>Name*:</translation>
+        <translation>Section name*:</translation>
     </message>
     <message>
         <location filename="dialogs/newsectiondialog.cpp" line="29"/>
         <source>Скорочення:</source>
-        <translation>abbreviation:</translation>
+        <translation>Abbreviation:</translation>
     </message>
     <message>
         <location filename="dialogs/newsectiondialog.cpp" line="34"/>
@@ -331,7 +528,7 @@
         <location filename="dialogs/newsectiondialog.cpp" line="56"/>
         <location filename="dialogs/newsectiondialog.cpp" line="71"/>
         <source>Помилка</source>
-        <translation>error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="dialogs/newsectiondialog.cpp" line="56"/>
@@ -346,12 +543,12 @@
     <message>
         <location filename="dialogs/newsectiondialog.cpp" line="68"/>
         <source>Секцію успішно додано!</source>
-        <translation>Section was created successfully!</translation>
+        <translation>Section added successfuly!</translation>
     </message>
     <message>
         <location filename="dialogs/newsectiondialog.cpp" line="71"/>
         <source>Не вдалось додати секцію!</source>
-        <translation>Couldnt create section!</translation>
+        <translation>Could not add section!</translation>
     </message>
 </context>
 </TS>
