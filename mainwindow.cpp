@@ -3,6 +3,7 @@
 #include "dialogs/newsectiondialog.h"
 #include "dialogs/newaccountdialog.h"
 #include "dialogs/logindialog.h"
+#include "dialogs/changepassworddialog.h"
 #include "qapplication.h"
 #include "ui_mainwindow.h"
 #include <QMenuBar>
@@ -15,6 +16,7 @@
 #include <QTranslator>
 #include <QSettings>
 #include <QTranslator>
+#include <QDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -344,5 +346,29 @@ void MainWindow::on_pbChangeLang_clicked()
 
 void MainWindow::setTranslator(QTranslator* translator) {
     mTranslator = translator;
+}
+
+
+void MainWindow::on_pbChangePassword_clicked()
+{
+        qDebug() <<"it works so far";
+    QModelIndex index = ui->usersTable->currentIndex();
+    if(!index.isValid()){
+        QMessageBox::warning(this, tr("Помилка"), tr("Оберіть користувача для зміни паролю!"));
+        return;
+    }
+    qDebug() <<"it works so far";
+    int row = index.row();
+    // int userId = mUsersModel->record(row).value("user_id").toInt();
+    QString username = mUsersModel->record(row).value("username").toString();
+    qDebug() <<"it works so far";
+    ChangePasswordDialog dialog(this);
+    qDebug() <<"it works so far init dialog";
+    dialog.setUsername(username);
+    if (dialog.exec() == QDialog::Accepted) {
+        statusBar()->showMessage(tr("Пароль успішно змінено!"), 3000);
+    }
+
+
 }
 

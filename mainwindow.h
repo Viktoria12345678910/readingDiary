@@ -27,8 +27,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QTranslator& getTranslator();
-    static MainWindow* instance();
     void setTranslator(QTranslator* translator);
+
 
 private slots:
     void onNewBook();
@@ -41,6 +41,8 @@ private slots:
     void onDeleteUser();
 
     void on_pbChangeLang_clicked();
+
+    void on_pbChangePassword_clicked();
 
 private:
     void setupUI();

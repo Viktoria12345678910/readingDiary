@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     database.cpp \
+    dialogs/changepassworddialog.cpp \
     dialogs/logindialog.cpp \
     dialogs/newaccountdialog.cpp \
     dialogs/newbookdialog.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     database.h \
+    dialogs/changepassworddialog.h \
     dialogs/logindialog.h \
     dialogs/newaccountdialog.h \
     dialogs/newbookdialog.h \

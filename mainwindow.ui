@@ -21,7 +21,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;catalog&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="catalogTab">
        <attribute name="title">
@@ -117,6 +117,13 @@
              <widget class="QPushButton" name="createUser">
               <property name="text">
                <string>Додати користувача</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pbChangePassword">
+              <property name="text">
+               <string>змінити пароль</string>
               </property>
              </widget>
             </item>

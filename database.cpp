@@ -164,6 +164,8 @@ bool Database::authenticateUser(const QString &username, const QString &password
     QString storedHash = query.value(0).toString();
     QString salt = query.value(1).toString();
     QString computedHash = hashPassword(password, salt);
+    qDebug()<<"storedHas: "<<storedHash;
+    qDebug()<<"computedHash: "<<computedHash;
 
     if (computedHash == storedHash) {
         // Update last login
@@ -278,6 +280,18 @@ bool Database::deleteUser(int userId)
 {
     QSqlQuery query;
     query.prepare("DELETE FROM users WHERE user_id = ?");
+    query.addBindValue(userId);
+    return query.exec();
+}
+
+bool Database::changePassword(int userId, QString newPassword)
+{
+    QSqlQuery query;
+    QString salt = generateSalt();
+    QString newHash = hashPassword(newPassword, salt);
+    query.prepare("UPDATE users SET password_hash = ?, salt = ? WHERE user_id = ?");
+    query.addBindValue(newHash);
+    query.addBindValue(salt);
     query.addBindValue(userId);
     return query.exec();
 }

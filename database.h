@@ -38,6 +38,7 @@ public:
     bool deleteBook(int bookId);
     bool deleteSection(int bookId);
     bool deleteUser(int bookId);
+    bool changePassword(int userId, QString newPassword);
 
     QSqlDatabase getDatabase() { return mDb; }
 
