@@ -1,3 +1,5 @@
+### Under constraction
+flatpak is not done and lucks functionalyty for some reason but i can fix it right now because i need to focus on my school work. I will fix it sometime during my summer break.
 ## Reading Diary
 This program is created for book lovers who want to document their library and have abilyty to quikly find the books they qre looking for.
 
